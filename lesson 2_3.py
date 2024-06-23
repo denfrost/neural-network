@@ -4,12 +4,15 @@ import matplotlib.pyplot as plt
 def act(x):
     return 0 if x <= 0 else 1
 
+C1 = [(1,0), (0,1)]
+C2 = [(0,0), (1,1)]
+
 def go(C):
     x = np.array([C[0], C[1], 1])
-    w1 = [1, 1, -1.5]
+    w1 = [1, 1, -1.5]   #2X3
     w2 = [1, 1, -0.5]
-    w_hidden = np.array([w1, w2])
-    w_out = np.array([-1, 1, -0.5])
+    w_hidden = np.array([w1, w2]) #1 NN Layer
+    w_out = np.array([-1, 1, -0.5])  #1X3 2 NN Layer
 
     sum = np.dot(w_hidden, x)
     out = [act(x) for x in sum]
@@ -19,9 +22,6 @@ def go(C):
     sum = np.dot(w_out, out)
     y = act(sum)
     return y
-
-C1 = [(1,0), (0,1)]
-C2 = [(0,0), (1,1)]
 
 print( go(C1[0]), go(C1[1]) )
 print( go(C2[0]), go(C2[1]) )
