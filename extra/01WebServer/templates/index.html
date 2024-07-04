@@ -52,12 +52,20 @@
             list-style: none;
             text-align: center;
             width: 220px;
+            position: relative; /* Добавлено для кнопки удаления всех изображений */
         }
 
         .gallery-item img {
             max-width: 200px;
             display: block;
             margin: 0 auto 10px;
+        }
+
+        /* Стили для кнопки удаления всех изображений */
+        .delete-all-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
         }
     </style>
 </head>
@@ -66,6 +74,10 @@
     <form action="{{ url_for('upload_all_images') }}" method="post" style="margin-bottom: 20px;">
         <button type="submit">Загрузить все изображения из папки images</button>
     </form>
+
+    <!-- Кнопка для удаления всех изображений -->
+    <button class="delete-all-btn" onclick="deleteAllImages()">Удалить все изображения</button>
+
     {% if images %}
         <ul class="gallery">
             {% for image in images %}
@@ -106,6 +118,24 @@
         function closeModal() {
             var modal = document.getElementById("myModal");
             modal.style.display = "none";
+        }
+
+        // Функция для удаления всех изображений
+        function deleteAllImages() {
+            if (confirm("Вы уверены, что хотите удалить все изображения?")) {
+                // Отправить запрос на удаление всех изображений
+                fetch('{{ url_for("delete_all_images") }}', {
+                    method: 'POST',
+                })
+                .then(response => {
+                    if (response.ok) {
+                        window.location.reload(); // Перезагрузить страницу после успешного удаления
+                    } else {
+                        alert('Ошибка при удалении изображений');
+                    }
+                })
+                .catch(error => console.error('Ошибка:', error));
+            }
         }
     </script>
 </body>

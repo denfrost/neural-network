@@ -4,7 +4,7 @@ import os
 app = Flask(__name__)
 
 # Укажите путь к каталогу с изображениями
-IMAGE_FOLDER = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'uploads')
+IMAGE_FOLDER = os.path.join(os.path.dirname(os.path.abspath(__file__)), '../uploads')
 app.config['IMAGE_FOLDER'] = IMAGE_FOLDER
 
 # Создаем каталог, если он не существует

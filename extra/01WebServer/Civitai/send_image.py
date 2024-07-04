@@ -21,7 +21,7 @@ headers = {
 url = 'https://civitai.com/api/image-upload'
 
 # Укажите путь к изображению, которое нужно отправить
-image_path = 'images/new2.png'
+image_path = '../images/new2.png'
 
 if __name__ == '__main__':
     # Откройте изображение в бинарном режиме

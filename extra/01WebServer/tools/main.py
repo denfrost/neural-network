@@ -19,10 +19,10 @@ class SSLAdapter(HTTPAdapter):
 url = 'https://localhost:5000/uploads'
 
 # Укажите путь к изображению, которое нужно отправить
-image_path = 'images/new.png'
+image_path = '../images/new.png'
 
 # Укажите путь к файлу с сертификатом
-cert_path = 'cert.pem'
+cert_path = '../cert.pem'
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
