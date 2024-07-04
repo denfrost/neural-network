@@ -16,10 +16,10 @@ class SSLAdapter(HTTPAdapter):
         return super(SSLAdapter, self).init_poolmanager(*args, **kwargs)
 
 # Укажите URL веб-сайта, куда нужно отправить изображение
-url = 'https://localhost:5000/upload'
+url = 'https://localhost:5000/uploads'
 
 # Укажите путь к изображению, которое нужно отправить
-image_path = 'images/1.png'
+image_path = 'images/new.png'
 
 # Укажите путь к файлу с сертификатом
 cert_path = 'cert.pem'
