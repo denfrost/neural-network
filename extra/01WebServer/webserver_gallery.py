@@ -65,6 +65,14 @@ def upload_all_images():
     except Exception as e:
         return f"Произошла ошибка: {str(e)}", 500
 
+@app.route('/delete_all_images', methods=['POST'])
+def delete_all_images():
+    for file in os.listdir(app.config['UPLOAD_FOLDER']):
+        file_path = os.path.join(app.config['UPLOAD_FOLDER'], file)
+        if os.path.isfile(file_path):
+            os.remove(file_path)
+    return redirect(url_for('index'))
+
 if __name__ == '__main__':
     print(f"Каталог изображений: {app.config['UPLOAD_FOLDER']}")
     app.run(debug=True, host='0.0.0.0', port=5000, ssl_context=('cert.pem', 'key.pem'))
